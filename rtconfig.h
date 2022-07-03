@@ -95,6 +95,12 @@
 #define RT_USING_SERIAL_V2
 #define RT_SERIAL_USING_DMA
 #define RT_USING_PIN
+#define RT_USING_SPI
+#define RT_USING_SFUD
+#define RT_SFUD_USING_SFDP
+#define RT_SFUD_USING_FLASH_INFO_TABLE
+#define RT_SFUD_SPI_MAX_HZ 16000000
+#define RT_DEBUG_SFUD
 
 /* Using USB */
 
@@ -243,6 +249,8 @@
 #define BSP_USING_UART6
 #define BSP_UART6_RX_BUFSIZE 256
 #define BSP_UART6_TX_BUFSIZE 0
+#define BSP_USING_SPI
+#define BSP_USING_SPI0
 /* end of On-chip Peripheral Drivers */
 
 /* Board extended module Drivers */

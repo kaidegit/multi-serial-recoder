@@ -3,7 +3,7 @@
         #define VECTOR_DATA_H
                 /* Number of interrupts allocated */
         #ifndef VECTOR_DATA_IRQ_COUNT
-        #define VECTOR_DATA_IRQ_COUNT    (9)
+        #define VECTOR_DATA_IRQ_COUNT    (13)
         #endif
         /* ISR prototypes */
         void sci_uart_rxi_isr(void);
@@ -15,6 +15,10 @@
         void usbfs_resume_handler(void);
         void usbfs_d0fifo_handler(void);
         void usbfs_d1fifo_handler(void);
+        void spi_rxi_isr(void);
+        void spi_txi_isr(void);
+        void spi_tei_isr(void);
+        void spi_eri_isr(void);
 
         /* Vector table allocations */
         #define VECTOR_NUMBER_SCI6_RXI ((IRQn_Type) 0) /* SCI6 RXI (Received data full) */
@@ -35,4 +39,12 @@
         #define USBFS_FIFO_0_IRQn          ((IRQn_Type) 7) /* USBFS FIFO 0 (DMA transfer request 0) */
         #define VECTOR_NUMBER_USBFS_FIFO_1 ((IRQn_Type) 8) /* USBFS FIFO 1 (DMA transfer request 1) */
         #define USBFS_FIFO_1_IRQn          ((IRQn_Type) 8) /* USBFS FIFO 1 (DMA transfer request 1) */
+        #define VECTOR_NUMBER_SPI0_RXI ((IRQn_Type) 9) /* SPI0 RXI (Receive buffer full) */
+        #define SPI0_RXI_IRQn          ((IRQn_Type) 9) /* SPI0 RXI (Receive buffer full) */
+        #define VECTOR_NUMBER_SPI0_TXI ((IRQn_Type) 10) /* SPI0 TXI (Transmit buffer empty) */
+        #define SPI0_TXI_IRQn          ((IRQn_Type) 10) /* SPI0 TXI (Transmit buffer empty) */
+        #define VECTOR_NUMBER_SPI0_TEI ((IRQn_Type) 11) /* SPI0 TEI (Transmission complete event) */
+        #define SPI0_TEI_IRQn          ((IRQn_Type) 11) /* SPI0 TEI (Transmission complete event) */
+        #define VECTOR_NUMBER_SPI0_ERI ((IRQn_Type) 12) /* SPI0 ERI (Error) */
+        #define SPI0_ERI_IRQn          ((IRQn_Type) 12) /* SPI0 ERI (Error) */
         #endif /* VECTOR_DATA_H */

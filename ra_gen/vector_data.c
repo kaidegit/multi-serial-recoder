@@ -13,6 +13,10 @@
             [6] = usbfs_resume_handler, /* USBFS RESUME (USBFS resume interrupt) */
             [7] = usbfs_d0fifo_handler, /* USBFS FIFO 0 (DMA transfer request 0) */
             [8] = usbfs_d1fifo_handler, /* USBFS FIFO 1 (DMA transfer request 1) */
+            [9] = spi_rxi_isr, /* SPI0 RXI (Receive buffer full) */
+            [10] = spi_txi_isr, /* SPI0 TXI (Transmit buffer empty) */
+            [11] = spi_tei_isr, /* SPI0 TEI (Transmission complete event) */
+            [12] = spi_eri_isr, /* SPI0 ERI (Error) */
         };
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENTRIES] =
         {
@@ -25,5 +29,9 @@
             [6] = BSP_PRV_IELS_ENUM(EVENT_USBFS_RESUME), /* USBFS RESUME (USBFS resume interrupt) */
             [7] = BSP_PRV_IELS_ENUM(EVENT_USBFS_FIFO_0), /* USBFS FIFO 0 (DMA transfer request 0) */
             [8] = BSP_PRV_IELS_ENUM(EVENT_USBFS_FIFO_1), /* USBFS FIFO 1 (DMA transfer request 1) */
+            [9] = BSP_PRV_IELS_ENUM(EVENT_SPI0_RXI), /* SPI0 RXI (Receive buffer full) */
+            [10] = BSP_PRV_IELS_ENUM(EVENT_SPI0_TXI), /* SPI0 TXI (Transmit buffer empty) */
+            [11] = BSP_PRV_IELS_ENUM(EVENT_SPI0_TEI), /* SPI0 TEI (Transmission complete event) */
+            [12] = BSP_PRV_IELS_ENUM(EVENT_SPI0_ERI), /* SPI0 ERI (Error) */
         };
         #endif

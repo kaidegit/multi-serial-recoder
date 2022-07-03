@@ -13,6 +13,7 @@
 #include "hal_data.h"
 #include <rtdevice.h>
 #include "usbd_cdc.h"
+#include <drv_spi.h>
 
 #define LED3_PIN    BSP_IO_PORT_01_PIN_06
 #define USER_INPUT  "P105"
@@ -20,8 +21,13 @@
 uint8_t usbd_cdc_stack[5120];
 struct rt_thread usbd_cdc_handle;
 
+static struct rt_spi_device sfud_dev;
+
 void hal_entry(void)
 {
+    uint32_t cs_pin = BSP_IO_PORT_02_PIN_07;
+    rt_hw_spi_device_attach(&sfud_dev, "sfspi", "spi0", (void *)cs_pin);
+
     rt_kprintf("\nHello RT-Thread!\n");
 
     rt_err_t result = rt_thread_init(&usbd_cdc_handle, "usbd_cdc", usbd_cdc, RT_NULL, usbd_cdc_stack, sizeof(usbd_cdc_stack), 20, 10);
