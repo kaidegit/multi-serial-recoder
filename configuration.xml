@@ -187,8 +187,8 @@
       <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
     </module>
     <module id="module.driver.uart_on_sci_uart.201575186">
-      <property id="module.driver.uart.name" value="g_uart7"/>
-      <property id="module.driver.uart.channel" value="7"/>
+      <property id="module.driver.uart.name" value="g_uart6"/>
+      <property id="module.driver.uart.channel" value="6"/>
       <property id="module.driver.uart.data_bits" value="module.driver.uart.data_bits.data_bits_8"/>
       <property id="module.driver.uart.parity" value="module.driver.uart.parity.parity_off"/>
       <property id="module.driver.uart.stop_bits" value="module.driver.uart.stop_bits.stop_bits_1"/>
@@ -202,7 +202,7 @@
       <property id="module.driver.uart.rx_edge_start" value="module.driver.uart.rx_edge_start.falling_edge"/>
       <property id="module.driver.uart.noisecancel_en" value="module.driver.uart.noisecancel_en.disabled"/>
       <property id="module.driver.uart.rx_fifo_trigger" value="module.driver.uart.rx_fifo_trigger.max"/>
-      <property id="module.driver.uart.callback" value="user_uart7_callback"/>
+      <property id="module.driver.uart.callback" value="user_uart6_callback"/>
       <property id="module.driver.uart.rxi_ipl" value="board.icu.common.irq.priority12"/>
       <property id="module.driver.uart.txi_ipl" value="board.icu.common.irq.priority12"/>
       <property id="module.driver.uart.tei_ipl" value="board.icu.common.irq.priority12"/>
@@ -415,6 +415,10 @@
       <configSetting altId="p213.gpio_mode.gpio_mode_peripheral" configurationId="p213.gpio_mode"/>
       <configSetting altId="p300.debug0.tck" configurationId="p300"/>
       <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
+      <configSetting altId="p304.sci6.rxd" configurationId="p304"/>
+      <configSetting altId="p304.gpio_mode.gpio_mode_peripheral" configurationId="p304.gpio_mode"/>
+      <configSetting altId="p305.sci6.txd" configurationId="p305"/>
+      <configSetting altId="p305.gpio_mode.gpio_mode_peripheral" configurationId="p305.gpio_mode"/>
       <configSetting altId="p407.usbfs0.vbus" configurationId="p407"/>
       <configSetting altId="p407.gpio_mode.gpio_mode_peripheral" configurationId="p407.gpio_mode"/>
       <configSetting altId="p410.spi1.miso" configurationId="p410"/>
@@ -460,6 +464,9 @@
       <configSetting altId="p712.gpio_mode.gpio_mode_out.low" configurationId="p712.gpio_mode"/>
       <configSetting altId="p713.output.low" configurationId="p713"/>
       <configSetting altId="p713.gpio_mode.gpio_mode_out.low" configurationId="p713.gpio_mode"/>
+      <configSetting altId="sci6.mode.asynchronous.free" configurationId="sci6.mode"/>
+      <configSetting altId="sci6.rxd.p304" configurationId="sci6.rxd"/>
+      <configSetting altId="sci6.txd.p305" configurationId="sci6.txd"/>
       <configSetting altId="sci7.mode.asynchronous.c" configurationId="sci7.mode"/>
       <configSetting altId="sci7.pairing.c" configurationId="sci7.pairing"/>
       <configSetting altId="sci7.rxd.p614" configurationId="sci7.rxd"/>

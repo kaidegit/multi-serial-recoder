@@ -47,7 +47,7 @@
 #define RT_USING_DEVICE
 #define RT_USING_CONSOLE
 #define RT_CONSOLEBUF_SIZE 128
-#define RT_CONSOLE_DEVICE_NAME "uart7"
+#define RT_CONSOLE_DEVICE_NAME "uart6"
 /* end of Kernel Device Object */
 #define RT_VER_NUM 0x40100
 /* end of RT-Thread Kernel */
@@ -240,9 +240,9 @@
 
 #define BSP_USING_GPIO
 #define BSP_USING_UART
-#define BSP_USING_UART7
-#define BSP_UART7_RX_BUFSIZE 256
-#define BSP_UART7_TX_BUFSIZE 0
+#define BSP_USING_UART6
+#define BSP_UART6_RX_BUFSIZE 256
+#define BSP_UART6_TX_BUFSIZE 0
 /* end of On-chip Peripheral Drivers */
 
 /* Board extended module Drivers */

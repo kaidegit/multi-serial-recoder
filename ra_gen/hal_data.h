@@ -20,15 +20,15 @@ extern const external_irq_cfg_t g_external_irq0_cfg;
 void irq0_callback(external_irq_callback_args_t * p_args);
 #endif
 /** UART on SCI Instance. */
-            extern const uart_instance_t      g_uart7;
+            extern const uart_instance_t      g_uart6;
 
             /** Access the UART instance using these structures when calling API functions directly (::p_api is not used). */
-            extern sci_uart_instance_ctrl_t     g_uart7_ctrl;
-            extern const uart_cfg_t g_uart7_cfg;
-            extern const sci_uart_extended_cfg_t g_uart7_cfg_extend;
+            extern sci_uart_instance_ctrl_t     g_uart6_ctrl;
+            extern const uart_cfg_t g_uart6_cfg;
+            extern const sci_uart_extended_cfg_t g_uart6_cfg_extend;
 
-            #ifndef user_uart7_callback
-            void user_uart7_callback(uart_callback_args_t * p_args);
+            #ifndef user_uart6_callback
+            void user_uart6_callback(uart_callback_args_t * p_args);
             #endif
 void hal_entry(void);
 void g_hal_init(void);

@@ -29,21 +29,21 @@ const external_irq_instance_t g_external_irq0 =
     .p_cfg         = &g_external_irq0_cfg,
     .p_api         = &g_external_irq_on_icu
 };
-sci_uart_instance_ctrl_t     g_uart7_ctrl;
+sci_uart_instance_ctrl_t     g_uart6_ctrl;
 
-            baud_setting_t               g_uart7_baud_setting =
+            baud_setting_t               g_uart6_baud_setting =
             {
                 /* Baud rate calculated with 0.469% error. */ .abcse = 0, .abcs = 0, .bgdm = 1, .cks = 0, .brr = 53, .mddr = (uint8_t) 256, .brme = false
             };
 
             /** UART extended configuration for UARTonSCI HAL driver */
-            const sci_uart_extended_cfg_t g_uart7_cfg_extend =
+            const sci_uart_extended_cfg_t g_uart6_cfg_extend =
             {
                 .clock                = SCI_UART_CLOCK_INT,
                 .rx_edge_start          = SCI_UART_START_BIT_FALLING_EDGE,
                 .noise_cancel         = SCI_UART_NOISE_CANCELLATION_DISABLE,
                 .rx_fifo_trigger        = SCI_UART_RX_FIFO_TRIGGER_MAX,
-                .p_baud_setting         = &g_uart7_baud_setting,
+                .p_baud_setting         = &g_uart6_baud_setting,
                 .flow_control           = SCI_UART_FLOW_CONTROL_RTS,
                 #if 0xFF != 0xFF
                 .flow_control_pin       = BSP_IO_PORT_FF_PIN_0xFF,
@@ -53,15 +53,15 @@ sci_uart_instance_ctrl_t     g_uart7_ctrl;
             };
 
             /** UART interface configuration */
-            const uart_cfg_t g_uart7_cfg =
+            const uart_cfg_t g_uart6_cfg =
             {
-                .channel             = 7,
+                .channel             = 6,
                 .data_bits           = UART_DATA_BITS_8,
                 .parity              = UART_PARITY_OFF,
                 .stop_bits           = UART_STOP_BITS_1,
-                .p_callback          = user_uart7_callback,
+                .p_callback          = user_uart6_callback,
                 .p_context           = NULL,
-                .p_extend            = &g_uart7_cfg_extend,
+                .p_extend            = &g_uart6_cfg_extend,
 #define RA_NOT_DEFINED (1)
 #if (RA_NOT_DEFINED == RA_NOT_DEFINED)
                 .p_transfer_tx       = NULL,
@@ -78,33 +78,33 @@ sci_uart_instance_ctrl_t     g_uart7_ctrl;
                 .txi_ipl             = (12),
                 .tei_ipl             = (12),
                 .eri_ipl             = (12),
-#if defined(VECTOR_NUMBER_SCI7_RXI)
-                .rxi_irq             = VECTOR_NUMBER_SCI7_RXI,
+#if defined(VECTOR_NUMBER_SCI6_RXI)
+                .rxi_irq             = VECTOR_NUMBER_SCI6_RXI,
 #else
                 .rxi_irq             = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_SCI7_TXI)
-                .txi_irq             = VECTOR_NUMBER_SCI7_TXI,
+#if defined(VECTOR_NUMBER_SCI6_TXI)
+                .txi_irq             = VECTOR_NUMBER_SCI6_TXI,
 #else
                 .txi_irq             = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_SCI7_TEI)
-                .tei_irq             = VECTOR_NUMBER_SCI7_TEI,
+#if defined(VECTOR_NUMBER_SCI6_TEI)
+                .tei_irq             = VECTOR_NUMBER_SCI6_TEI,
 #else
                 .tei_irq             = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_SCI7_ERI)
-                .eri_irq             = VECTOR_NUMBER_SCI7_ERI,
+#if defined(VECTOR_NUMBER_SCI6_ERI)
+                .eri_irq             = VECTOR_NUMBER_SCI6_ERI,
 #else
                 .eri_irq             = FSP_INVALID_VECTOR,
 #endif
             };
 
 /* Instance structure to use this module. */
-const uart_instance_t g_uart7 =
+const uart_instance_t g_uart6 =
 {
-    .p_ctrl        = &g_uart7_ctrl,
-    .p_cfg         = &g_uart7_cfg,
+    .p_ctrl        = &g_uart6_ctrl,
+    .p_cfg         = &g_uart6_cfg,
     .p_api         = &g_uart_on_sci
 };
 void g_hal_init(void) {
