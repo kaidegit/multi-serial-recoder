@@ -16,4 +16,8 @@
 
 void DB_Init();
 
+void DB_InsertLog(char *log, uint8_t len);
+
+void DB_ReadAllLogs();
+
 #endif /* SRC_DATABASE_H_ */

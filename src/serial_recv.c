@@ -11,6 +11,7 @@
 #include "usbd_cdc.h"
 #include "string.h"
 #include "stdio.h"
+#include "database.h"
 
 static rt_mq_t uart_queue_handle = RT_NULL;
 
@@ -76,6 +77,8 @@ void rx_recv(void *para) {
                 sprintf(send, "[%s]%.*s",
                         tag, *len, buffer);
                 usbd_print(send, *len - 1 + 7);
+                DB_InsertLog(send, *len - 1 + 7);
+                DB_ReadAllLogs();
                 *len = 0;
                 memset(buffer, 0, 256 * sizeof(char));
             }
