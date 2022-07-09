@@ -110,15 +110,15 @@ fsp_err_t usbd_print(char *p_data, uint16_t len) {
     fsp_err_t err = FSP_SUCCESS;
 
     err = R_USB_Write(&g_basic0_ctrl, (uint8_t *)p_data, len, (uint8_t)g_usb_class_type);
-    /* Handle error */
-    if (FSP_SUCCESS != err) {
-        return err;
-    }
-
-    err = check_for_write_complete();
-    if (FSP_SUCCESS != err) {
-        /* Did not get the event hence returning error */
-        return FSP_ERR_USB_FAILED;
-    }
+//    /* Handle error */
+//    if (FSP_SUCCESS != err) {
+//        return err;
+//    }
+//
+//    err = check_for_write_complete();
+//    if (FSP_SUCCESS != err) {
+//        /* Did not get the event hence returning error */
+//        return FSP_ERR_USB_FAILED;
+//    }
     return err;
 }
