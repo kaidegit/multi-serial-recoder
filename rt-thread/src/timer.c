@@ -148,15 +148,13 @@ static void _timer_init(rt_timer_t timer,
  *
  * @param timer_list is the array of time list
  *
- * @param timeout_tick is the next timer's ticks
- *
- * @return  Return the operation status. If the return value is RT_EOK, the function is successfully executed.
- *          If the return value is any other values, it means this operation failed.
+ * @return the next timer's ticks
  */
-static rt_err_t _timer_list_next_timeout(rt_list_t timer_list[], rt_tick_t *timeout_tick)
+static rt_tick_t _timer_list_next_timeout(rt_list_t timer_list[])
 {
     struct rt_timer *timer;
     register rt_base_t level;
+    rt_tick_t timeout_tick = RT_TICK_MAX;
 
     /* disable interrupt */
     level = rt_hw_interrupt_disable();
@@ -165,18 +163,13 @@ static rt_err_t _timer_list_next_timeout(rt_list_t timer_list[], rt_tick_t *time
     {
         timer = rt_list_entry(timer_list[RT_TIMER_SKIP_LIST_LEVEL - 1].next,
                               struct rt_timer, row[RT_TIMER_SKIP_LIST_LEVEL - 1]);
-        *timeout_tick = timer->timeout_tick;
-
-        /* enable interrupt */
-        rt_hw_interrupt_enable(level);
-
-        return RT_EOK;
+        timeout_tick = timer->timeout_tick;
     }
 
     /* enable interrupt */
     rt_hw_interrupt_enable(level);
 
-    return -RT_ERROR;
+    return timeout_tick;
 }
 
 /**
@@ -572,7 +565,6 @@ rt_err_t rt_timer_control(rt_timer_t timer, int cmd, void *arg)
         break;
 
     case RT_TIMER_CTRL_SET_TIME:
-        RT_ASSERT((*(rt_tick_t *)arg) < RT_TICK_MAX / 2);
         timer->init_tick = *(rt_tick_t *)arg;
         break;
 
@@ -690,9 +682,7 @@ void rt_timer_check(void)
  */
 rt_tick_t rt_timer_next_timeout_tick(void)
 {
-    rt_tick_t next_timeout = RT_TICK_MAX;
-    _timer_list_next_timeout(_timer_list, &next_timeout);
-    return next_timeout;
+    return _timer_list_next_timeout(_timer_list);
 }
 
 #ifdef RT_USING_TIMER_SOFT
@@ -786,7 +776,8 @@ static void _timer_thread_entry(void *parameter)
     while (1)
     {
         /* get the next timeout tick */
-        if (_timer_list_next_timeout(_soft_timer_list, &next_timeout) != RT_EOK)
+        next_timeout = _timer_list_next_timeout(_soft_timer_list);
+        if (next_timeout == RT_TICK_MAX)
         {
             /* no software timer exist, suspend self. */
             rt_thread_suspend(rt_thread_self());

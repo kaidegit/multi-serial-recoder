@@ -15,7 +15,6 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/statfs.h>
-#include <sys/errno.h>
 
 #include "sys/mman.h"
 

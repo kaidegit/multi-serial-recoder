@@ -113,7 +113,7 @@ def GCCResult(rtconfig, str):
         stdout, stderr = child.communicate()
 
         # print(stdout)
-        if stderr != '' and stderr != b'':
+        if stderr != '':
             print(stderr)
 
         have_fdset = 0

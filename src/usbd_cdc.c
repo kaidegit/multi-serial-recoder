@@ -82,29 +82,29 @@ void usbd_cdc(void *para) {
     }
 }
 
-//static fsp_err_t check_for_write_complete(void) {
-//    usb_status_t usb_write_event = USB_STATUS_NONE;
-//    int32_t timeout_count = 200;  // about 200ms
-//    fsp_err_t err = FSP_SUCCESS;
-//
-//    do {
-//        err = R_USB_EventGet(&g_basic0_ctrl, &usb_write_event);
-//        if (FSP_SUCCESS != err) {
-//            return err;
-//        }
-//
-//        --timeout_count;
-//
-//        if (0 > timeout_count) {
-//            timeout_count = 0;
-//            err = (fsp_err_t)USB_STATUS_NONE;
-//            break;
-//        }
-//        rt_thread_mdelay(1);
-//    } while (USB_STATUS_WRITE_COMPLETE != usb_write_event);
-//
-//    return err;
-//}
+static fsp_err_t check_for_write_complete(void) {
+    usb_status_t usb_write_event = USB_STATUS_NONE;
+    int32_t timeout_count = 200;  // about 200ms
+    fsp_err_t err = FSP_SUCCESS;
+
+    do {
+        err = R_USB_EventGet(&g_basic0_ctrl, &usb_write_event);
+        if (FSP_SUCCESS != err) {
+            return err;
+        }
+
+        --timeout_count;
+
+        if (0 > timeout_count) {
+            timeout_count = 0;
+            err = (fsp_err_t)USB_STATUS_NONE;
+            break;
+        }
+        rt_thread_mdelay(1);
+    } while (USB_STATUS_WRITE_COMPLETE != usb_write_event);
+
+    return err;
+}
 
 fsp_err_t usbd_print(char *p_data, uint16_t len) {
     fsp_err_t err = FSP_SUCCESS;

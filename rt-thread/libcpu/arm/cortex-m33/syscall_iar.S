@@ -6,25 +6,22 @@
 ; * Change Logs:
 ; * Date           Author       Notes
 ; * 2019-10-25     tyx          first version
-; * 2021-03-26     lxf          modify bad instruction
 ; */
 
 ;/*
 ; * @addtogroup cortex-m33
 ; */
 
-
     SECTION    .text:CODE(2)
     THUMB
     REQUIRE8
     PRESERVE8
 
-    IMPORT rt_secure_svc_handle
-
 ;/*
 ; * int tzcall(int id, rt_ubase_t arg0, rt_ubase_t arg1, rt_ubase_t arg2);
 ; */
-    EXPORT tzcall
+.global tzcall
+.type tzcall, %function
 tzcall:
     SVC     1                       ;/* call SVC 1 */
     BX      LR
@@ -42,7 +39,8 @@ tzcall_entry:
 syscall_entry:
     BX      LR                      ;/* return to user app */
 
-    EXPORT SVC_Handler
+.global SVC_Handler
+.type SVC_Handler, %function
 SVC_Handler:
 
     ;/* get SP, save to R1 */
@@ -63,5 +61,3 @@ get_sp_done:
     ;/* if svc == 1, do TrustZone call */
     CMP     R0, #0x1
     BEQ    tzcall_entry
-
-    END
