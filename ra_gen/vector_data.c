@@ -21,6 +21,22 @@
             [14] = sci_uart_txi_isr, /* SCI0 TXI (Transmit data empty) */
             [15] = sci_uart_tei_isr, /* SCI0 TEI (Transmit end) */
             [16] = sci_uart_eri_isr, /* SCI0 ERI (Receive error) */
+            [17] = sci_uart_rxi_isr, /* SCI1 RXI (Received data full) */
+            [18] = sci_uart_txi_isr, /* SCI1 TXI (Transmit data empty) */
+            [19] = sci_uart_tei_isr, /* SCI1 TEI (Transmit end) */
+            [20] = sci_uart_eri_isr, /* SCI1 ERI (Receive error) */
+            [21] = sci_uart_rxi_isr, /* SCI2 RXI (Received data full) */
+            [22] = sci_uart_txi_isr, /* SCI2 TXI (Transmit data empty) */
+            [23] = sci_uart_tei_isr, /* SCI2 TEI (Transmit end) */
+            [24] = sci_uart_eri_isr, /* SCI2 ERI (Receive error) */
+            [25] = sci_uart_rxi_isr, /* SCI3 RXI (Received data full) */
+            [26] = sci_uart_txi_isr, /* SCI3 TXI (Transmit data empty) */
+            [27] = sci_uart_tei_isr, /* SCI3 TEI (Transmit end) */
+            [28] = sci_uart_eri_isr, /* SCI3 ERI (Receive error) */
+            [29] = sci_uart_rxi_isr, /* SCI4 RXI (Received data full) */
+            [30] = sci_uart_txi_isr, /* SCI4 TXI (Transmit data empty) */
+            [31] = sci_uart_tei_isr, /* SCI4 TEI (Transmit end) */
+            [32] = sci_uart_eri_isr, /* SCI4 ERI (Receive error) */
         };
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENTRIES] =
         {
@@ -41,5 +57,21 @@
             [14] = BSP_PRV_IELS_ENUM(EVENT_SCI0_TXI), /* SCI0 TXI (Transmit data empty) */
             [15] = BSP_PRV_IELS_ENUM(EVENT_SCI0_TEI), /* SCI0 TEI (Transmit end) */
             [16] = BSP_PRV_IELS_ENUM(EVENT_SCI0_ERI), /* SCI0 ERI (Receive error) */
+            [17] = BSP_PRV_IELS_ENUM(EVENT_SCI1_RXI), /* SCI1 RXI (Received data full) */
+            [18] = BSP_PRV_IELS_ENUM(EVENT_SCI1_TXI), /* SCI1 TXI (Transmit data empty) */
+            [19] = BSP_PRV_IELS_ENUM(EVENT_SCI1_TEI), /* SCI1 TEI (Transmit end) */
+            [20] = BSP_PRV_IELS_ENUM(EVENT_SCI1_ERI), /* SCI1 ERI (Receive error) */
+            [21] = BSP_PRV_IELS_ENUM(EVENT_SCI2_RXI), /* SCI2 RXI (Received data full) */
+            [22] = BSP_PRV_IELS_ENUM(EVENT_SCI2_TXI), /* SCI2 TXI (Transmit data empty) */
+            [23] = BSP_PRV_IELS_ENUM(EVENT_SCI2_TEI), /* SCI2 TEI (Transmit end) */
+            [24] = BSP_PRV_IELS_ENUM(EVENT_SCI2_ERI), /* SCI2 ERI (Receive error) */
+            [25] = BSP_PRV_IELS_ENUM(EVENT_SCI3_RXI), /* SCI3 RXI (Received data full) */
+            [26] = BSP_PRV_IELS_ENUM(EVENT_SCI3_TXI), /* SCI3 TXI (Transmit data empty) */
+            [27] = BSP_PRV_IELS_ENUM(EVENT_SCI3_TEI), /* SCI3 TEI (Transmit end) */
+            [28] = BSP_PRV_IELS_ENUM(EVENT_SCI3_ERI), /* SCI3 ERI (Receive error) */
+            [29] = BSP_PRV_IELS_ENUM(EVENT_SCI4_RXI), /* SCI4 RXI (Received data full) */
+            [30] = BSP_PRV_IELS_ENUM(EVENT_SCI4_TXI), /* SCI4 TXI (Transmit data empty) */
+            [31] = BSP_PRV_IELS_ENUM(EVENT_SCI4_TEI), /* SCI4 TEI (Transmit end) */
+            [32] = BSP_PRV_IELS_ENUM(EVENT_SCI4_ERI), /* SCI4 ERI (Receive error) */
         };
         #endif
