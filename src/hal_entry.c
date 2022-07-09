@@ -13,8 +13,8 @@
 #include "hal_data.h"
 #include <rtdevice.h>
 #include "usbd_cdc.h"
-#include <drv_spi.h>
 #include "serial_recv.h"
+#include "database.h"
 
 #define LED3_PIN    BSP_IO_PORT_01_PIN_06
 #define USER_INPUT  "P105"
@@ -22,16 +22,11 @@
 uint8_t usbd_cdc_stack[5120];
 struct rt_thread usbd_cdc_handle;
 
-struct rt_spi_device sfud_dev;
-
 uint8_t rx_stack[5120];
 struct rt_thread rx_handle;
 
 void hal_entry(void)
 {
-    uint32_t cs_pin = BSP_IO_PORT_02_PIN_07;
-    rt_hw_spi_device_attach(&sfud_dev, "sfspi", "spi0", (void *)cs_pin);
-
     rt_kprintf("\nHello RT-Thread!\n");
 
     rt_err_t result = rt_thread_init(&usbd_cdc_handle, "usbd_cdc", usbd_cdc, RT_NULL, usbd_cdc_stack, sizeof(usbd_cdc_stack), 20, 10);
@@ -40,6 +35,8 @@ void hal_entry(void)
 
     result = rt_thread_init(&rx_handle, "rx_recv", rx_recv, RT_NULL, rx_stack, sizeof(rx_stack), 20, 10);
     if (result == RT_EOK) rt_thread_startup(&rx_handle);
+
+    DB_Init();
 
     while (1)
     {
