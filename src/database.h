@@ -16,7 +16,7 @@
 
 void DB_Init();
 
-void DB_InsertLog(char *log, uint8_t len);
+void DB_InsertLog(char *log);
 
 void DB_ReadAllLogs();
 

@@ -24,6 +24,8 @@ struct rt_thread usbd_cdc_handle;
 
 uint8_t rx_stack[5120];
 struct rt_thread rx_handle;
+uint8_t rx_send_store_stack[5120];
+struct rt_thread rx_send_store_handle;
 
 void hal_entry(void)
 {
@@ -33,8 +35,10 @@ void hal_entry(void)
     if (result == RT_EOK) rt_thread_startup(&usbd_cdc_handle);
 
 
-    result = rt_thread_init(&rx_handle, "rx_recv", rx_recv, RT_NULL, rx_stack, sizeof(rx_stack), 20, 10);
+    result = rt_thread_init(&rx_handle, "rx_recv", rx_recv, RT_NULL, rx_stack, sizeof(rx_stack), 10, 10);
     if (result == RT_EOK) rt_thread_startup(&rx_handle);
+    result = rt_thread_init(&rx_send_store_handle, "rx_send_store", rx_send_store, RT_NULL, rx_send_store_stack, sizeof(rx_send_store_stack), 15, 10);
+    if (result == RT_EOK) rt_thread_startup(&rx_send_store_handle);
 
     DB_Init();
 

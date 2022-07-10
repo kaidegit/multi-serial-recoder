@@ -18,4 +18,6 @@ rt_err_t uart_irq_cb(rt_device_t serial_dev, rt_size_t size);
 
 void rx_recv(void *para);
 
+void rx_send_store(void *para);
+
 #endif /* SRC_SERIAL_RECV_H_ */
