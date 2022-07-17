@@ -1,4 +1,4 @@
-#Sat Jul 09 22:35:27 CST 2022
+#Mon Jul 11 13:35:01 CST 2022
 com.renesas.cdt.ddsc.packs.componentfiles/Renesas\#\#Common\#\#all\#\#fsp_common\#\#\#\#3.5.0/libraries=
 com.renesas.cdt.ddsc.packs.componentfiles/Renesas\#\#HAL\ Drivers\#\#all\#\#r_spi\#\#\#\#3.5.0/all=2044432844,ra/fsp/inc/instances/r_spi.h|1854500045,ra/fsp/src/r_spi/r_spi.c|1108533607,ra/fsp/inc/api/r_spi_api.h|1610456547,ra/fsp/inc/api/r_transfer_api.h
 com.renesas.cdt.ddsc.packs.componentfiles/Renesas\#\#HAL\ Drivers\#\#all\#\#r_usb_pcdc\#\#\#\#3.5.0/libraries=

@@ -5,21 +5,17 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2022-07-10     yekai       the first version
+ * 2022-07-17     yekai       the first version
  */
-#ifndef SRC_DATABASE_H_
-#define SRC_DATABASE_H_
+#ifndef SRC_BUTTON_H_
+#define SRC_BUTTON_H_
 
 #include "hal_data.h"
 #include "rtthread.h"
 #include <rtdevice.h>
 
-void DB_Init();
 
-void DB_InsertLog(char *log);
+void button_thread(void *para);
 
-void DB_ReadAllLogs();
 
-void DB_ClearLogs(void);
-
-#endif /* SRC_DATABASE_H_ */
+#endif /* SRC_BUTTON_H_ */

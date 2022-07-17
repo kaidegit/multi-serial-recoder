@@ -14,6 +14,7 @@
 #include "sfud.h"
 #include "spi_flash_sfud.h"
 #include "finsh.h"
+#include "usbd_cdc.h"
 
 struct rt_spi_device sfud_dev;
 struct fdb_tsdb log_db = {0};
@@ -46,6 +47,7 @@ static bool DB_query_cb(fdb_tsl_t tsl, void *arg) {
     fdb_blob_read((fdb_db_t) db, fdb_tsl_to_blob(tsl, fdb_blob_make(&blob, log, 255)));
     rt_kprintf("[query_cb] queried a TSL: time: %ld, state :%d, str:%s \r\n", tsl->time, tsl->status, log);
 
+    usbd_print(log, strlen(log));
     return false;
 }
 

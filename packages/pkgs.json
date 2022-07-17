@@ -3,5 +3,10 @@
   "path": "/packages/system/FlashDB", 
   "ver": "v1.1.2", 
   "name": "FLASHDB"
+ }, 
+ {
+  "path": "/packages/misc/MultiButton", 
+  "ver": "v1.1.0", 
+  "name": "MULTIBUTTON"
  }
 ]
