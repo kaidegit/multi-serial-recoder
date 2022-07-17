@@ -36,6 +36,8 @@ void hal_entry(void)
 {
     rt_kprintf("\nHello RT-Thread!\n");
 
+    DB_Init();
+
     // 优先级顺序 串口接收 > 串口数据存储发送 = 按键扫描 = USB CDC事件
     // 为保证按下按键时能使用CDC连续发送数据，优先级应相等
 
@@ -50,8 +52,6 @@ void hal_entry(void)
 
     result = rt_thread_init(&button_thread_handle, "button_thread", button_thread, RT_NULL, button_thread_stack, sizeof(button_thread_stack), 20, 10);
     if (result == RT_EOK) rt_thread_startup(&button_thread_handle);
-
-    DB_Init();
 
     while (1)
     {
